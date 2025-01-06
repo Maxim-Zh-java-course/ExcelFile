@@ -19,13 +19,20 @@ public class AppStart {
 // Создание основного окна
             JFrame frame = new JFrame("Время работы с проектом / Time spent working on the project");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(800, 300);
+            frame.setSize(800, 500);
             frame.setLayout(new BorderLayout());
 
             // Добавление логотипа
-            ImageIcon logoIcon = new ImageIcon("path_to_logo.png"); // Укажите путь к логотипу
-            JLabel logoLabel = new JLabel(logoIcon);
-            logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            ImageIcon logoIcon = new ImageIcon("Logo.png"); // Укажите путь к логотипу
+          Image scaledImage = logoIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH); // Масштабирование
+           ImageIcon scaledIcon = new ImageIcon(scaledImage);
+            JLabel logoLabel = new JLabel(scaledIcon);
+            logoLabel.setHorizontalAlignment(SwingConstants.LEFT);
+
+            // Панель для логотипа с отступом сверху
+            JPanel logoPanel = new JPanel(new BorderLayout());
+            logoPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0)); // Отступ: сверху 20px
+            logoPanel.add(logoLabel, BorderLayout.WEST);
 
             // Основная панель с отступами
             JPanel mainPanel = new JPanel(new GridLayout(6, 4));
@@ -45,7 +52,7 @@ public class AppStart {
             mainPanel.add(new JLabel()); // пустое пространство
 
             // Добавление логотипа и основной панели в окно
-            frame.add(logoLabel, BorderLayout.NORTH);
+            frame.add(logoLabel, BorderLayout.BEFORE_FIRST_LINE);
             frame.add(mainPanel, BorderLayout.CENTER);
 
             // Обработчик для автоматического перехода на поле "Проект"
