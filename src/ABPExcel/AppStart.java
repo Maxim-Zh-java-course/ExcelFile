@@ -2,7 +2,7 @@ package ABPExcel;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-//
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
@@ -14,10 +14,22 @@ import java.time.format.DateTimeFormatter;
 public class AppStart {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+
+
+// Создание основного окна
             JFrame frame = new JFrame("Время работы с проектом / Time spent working on the project");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(800, 300);
-            frame.setLayout(new GridLayout(6, 4));
+            frame.setLayout(new BorderLayout());
+
+            // Добавление логотипа
+            ImageIcon logoIcon = new ImageIcon("path_to_logo.png"); // Укажите путь к логотипу
+            JLabel logoLabel = new JLabel(logoIcon);
+            logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+            // Основная панель с отступами
+            JPanel mainPanel = new JPanel(new GridLayout(6, 4));
+            mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Отступы
 
             // Поля ввода данных
             JLabel idLabel = new JLabel("Employee / Работник / :");
@@ -25,12 +37,16 @@ public class AppStart {
             JLabel projectLabel = new JLabel("Project / Проект / :");
             JTextField projectField = new JTextField();
 
-            // Добавление компонентов на форму
-            frame.add(idLabel);
-            frame.add(idField);
-            frame.add(projectLabel);
-            frame.add(projectField);
-            frame.add(new JLabel()); // пустое пространство
+            // Добавление компонентов на основную панель
+            mainPanel.add(idLabel);
+            mainPanel.add(idField);
+            mainPanel.add(projectLabel);
+            mainPanel.add(projectField);
+            mainPanel.add(new JLabel()); // пустое пространство
+
+            // Добавление логотипа и основной панели в окно
+            frame.add(logoLabel, BorderLayout.NORTH);
+            frame.add(mainPanel, BorderLayout.CENTER);
 
             // Обработчик для автоматического перехода на поле "Проект"
             idField.addActionListener(e -> projectField.requestFocus());
