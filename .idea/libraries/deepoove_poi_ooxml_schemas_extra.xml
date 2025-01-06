@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="deepoove.poi.ooxml.schemas.extra" type="repository">
+    <properties maven-id="com.deepoove:poi-ooxml-schemas-extra:5.1.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/deepoove/poi-ooxml-schemas-extra/5.1.0/poi-ooxml-schemas-extra-5.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
